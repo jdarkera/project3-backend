@@ -17,7 +17,7 @@ const uri = process.env.MONGODB_URI;
 
 
 // Connecting to the database
-mongoose.connect(process.env.DATABASE, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -48,11 +48,13 @@ app.use('/reviews', reviewRouter);
 app.use('/applications', applicationsRouter);
 
 // Create a Server
-const server = app.listen(8080, function () { 
-    const host = server.address().address
-    const port = server.address().port
-    console.log("App listening at http://%s:%s", host, port) 
-})
+// const server = app.listen(8080, function () { 
+//     const host = server.address().address
+//     const port = server.address().port
+//     console.log("App listening at http://%s:%s", host, port) 
+// })
+
+const server = process.env.PORT
 
 mongoose.set('useCreateIndex', true);
 
